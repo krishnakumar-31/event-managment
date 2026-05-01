@@ -1,0 +1,82 @@
+/* Import original Inter font just in case for other pages, but default to Satoshi */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Brutalist-lite SaaS Theme Variables */
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Satoshi', sans-serif;
+  
+  --color-charcoal: #171e19;
+  --color-dark: #272727;
+  --color-white: #ffffff;
+  --color-yellow: #ffe17c;
+  --color-sage: #b7c6c2;
+
+  --bg-light: var(--color-white);
+  --bg-dark: var(--color-charcoal);
+
+  --border-light: rgba(23, 30, 25, 0.1);
+  --border-dark: rgba(183, 198, 194, 0.1);
+
+  --transition-bento: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light);
+  color: var(--color-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base resets */
+input, select, textarea, button {
+  font-family: var(--font-body);
+}
+
+/* Grid Background Utility */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(183, 198, 194, 0.2) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(183, 198, 194, 0.2) 1px, transparent 1px);
+}
+
+.bg-grid-pattern-dark {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Highlight Text Utility */
+.highlight-yellow {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.highlight-yellow::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: -5%;
+  width: 110%;
+  height: 80%;
+  background-color: var(--color-yellow);
+  z-index: -1;
+  transform: rotate(-3deg); /* Slightly less than 15 for better readability, but we can do -15 if desired */
+}
+
+/* Animations */
+@keyframes pulse-abstract {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes float-cursor {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(15px, -15px); }
+  100% { transform: translate(0, 0); }
+}
