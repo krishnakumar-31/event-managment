@@ -1,15 +1,18 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from flask_mysqldb import MySQL
+import os
 
 app = Flask(__name__)
+
 CORS(app)
 
-# MySQL Configuration
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'mysql123'
-app.config['MYSQL_DB'] = 'event_booking'
+# MySQL Configuration (Aiven + Render)
+app.config['MYSQL_HOST'] = os.environ.get("DB_HOST")
+app.config['MYSQL_USER'] = os.environ.get("DB_USER")
+app.config['MYSQL_PASSWORD'] = os.environ.get("DB_PASSWORD")
+app.config['MYSQL_DB'] = os.environ.get("DB_NAME")
+app.config['MYSQL_PORT'] = int(os.environ.get("DB_PORT", 3306))
 
 mysql = MySQL(app)
 
